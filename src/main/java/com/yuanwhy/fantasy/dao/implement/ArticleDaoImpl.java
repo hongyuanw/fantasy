@@ -10,6 +10,11 @@ import com.yuanwhy.fantasy.domain.Article;
 public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao {
 
 	@Override
+	public Article getArticle(int n) {
+		return getSqlSession().selectOne("selectArticle", n);
+	}
+
+	@Override
 	public List<Article> getArticles(int n) {
 		List<Article> list = getSqlSession().selectList("selectArticles", n);
 		return list;

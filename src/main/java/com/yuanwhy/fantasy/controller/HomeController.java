@@ -1,5 +1,6 @@
 package com.yuanwhy.fantasy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,8 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		List<Article> articles = articleService.getArticles(2);
+		List<Article> articles = new ArrayList<Article>();
+		articles.add(articleService.getArticle(2));
 		model.addAttribute("articles", articles);
 		return "home-index";
 	}

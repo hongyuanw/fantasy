@@ -6,4 +6,8 @@
   <select id="selectArticles" parameterType="int" resultType="Article">
     select * from article limit #{n}
   </select>
+
+  <select id="selectArticle" parameterType="int"  resultType="Article">
+    SELECT * FROM article WHERE id = #{n}
+  </select>
 </mapper>

@@ -6,6 +6,8 @@ import com.yuanwhy.fantasy.domain.Article;
 
 public interface ArticleService {
 
-	List<Article> getArticles(int n);
-	
+    Article getArticle(int n);
+
+    List<Article> getArticles(int n);
+
 }
