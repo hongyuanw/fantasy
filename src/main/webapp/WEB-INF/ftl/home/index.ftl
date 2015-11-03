@@ -5,3 +5,5 @@
     ${article.content}
     <br />
 [/#list]
+
+powered by ${domain}

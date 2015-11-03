@@ -33,4 +33,11 @@
 		<property name="templateLoaderPath" value="/WEB-INF/ftl"></property>
 		<property name="defaultEncoding" value="utf-8"></property>
 	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.yuanwhy.fantasy.interceptor.DefaultInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
