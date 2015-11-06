@@ -21,11 +21,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Fantasy</a>
+                <a class="navbar-brand" href="/">Fantasy</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Home</a></li>
+                    <li class="active"><a href="/">Home</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -41,7 +41,7 @@
         </tr>
         </thead>
         <tbody>
-        [#list films as film]
+        [#list filmDtos.items as film]
         <tr>
             <td>${film.filmId}</td>
             <td>${film.title}</td>
@@ -50,6 +50,27 @@
         [/#list]
         </tbody>
     </table>
+    <nav>
+        <ul class="pagination">
+            [#if filmDtos.pageNum==1]
+                <li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            [#else ]
+                <li><a href="${urlWithoutPaging}/pagenum/${filmDtos.pageNum-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            [/#if]
+            [#list 1..filmDtos.pageCount as num]
+                [#if num==filmDtos.pageNum]
+                    <li class="active"><a href="${urlWithoutPaging}/pagenum/${num}">${num} <span class="sr-only">(current)</span></a></li>
+                [#else]
+                    <li><a href="${urlWithoutPaging}/pagenum/${num}">${num} </a></li>
+                [/#if]
+            [/#list]
+            [#if filmDtos.pageNum==filmDtos.pageCount]
+                <li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+            [#else ]
+                <li><a href="${urlWithoutPaging}/pagenum/${filmDtos.pageNum+1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+            [/#if]
+        </ul>
+    </nav>
     powered by ${domain}
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

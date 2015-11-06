@@ -1,11 +1,13 @@
 package com.yuanwhy.fantasy.controller;
 
-import com.yuanwhy.fantasy.domain.Film;
+import com.yuanwhy.fantasy.dto.PageDto;
+import com.yuanwhy.fantasy.entity.Film;
 import com.yuanwhy.fantasy.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.ServletForwardingController;
 
 import java.util.List;
 
@@ -18,10 +20,8 @@ public class HomeController {
     private FilmService filmService;
 
     @RequestMapping("/")
-    public ModelAndView index() {
-        List<Film> films =filmService.getFilms(2);
-        ModelAndView modelAndView = new ModelAndView("home/index");
-        modelAndView.addObject(FILMS, films);
-        return modelAndView;
+    public String index() {
+        String forwardUrl = "forward:/film/list/pagesize/10/pagenum/1";
+        return forwardUrl;
     }
 }

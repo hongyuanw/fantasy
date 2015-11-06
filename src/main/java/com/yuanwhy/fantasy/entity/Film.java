@@ -1,4 +1,4 @@
-package com.yuanwhy.fantasy.domain;
+package com.yuanwhy.fantasy.entity;
 
 public class Film {
     private int filmId;
