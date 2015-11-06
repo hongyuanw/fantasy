@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuanwhy.fantasy.dao.FilmDao">
+    <resultMap id="result" type="com.yuanwhy.fantasy.domain.Film">
+        <result property="filmId" javaType="int" column="film_id"/>
+        <result property="title" javaType="java.lang.String" column="title"/>
+        <result property="description" javaType="java.lang.String" column="description"/>
+    </resultMap>
+
+    <select id="getFilm" parameterType="int" resultMap="result">
+      SELECT film_id, title, description FROM film WHERE film_id = #{n}
+    </select>
+
+    <select id="getFilms" parameterType="int" resultMap="result">
+      SELECT film_id, title, description FROM film limit #{n}
+    </select>
+</mapper>
