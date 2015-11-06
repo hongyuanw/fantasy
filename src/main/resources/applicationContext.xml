@@ -19,7 +19,7 @@
 	</bean>
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
-		<property name="url" value="jdbc:mysql://localhost:3306/fantasy" />
+		<property name="url" value="jdbc:mysql://localhost:3306/sakila" />
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 
@@ -68,8 +68,8 @@
 		</property>
 	</bean>
 
-	<bean id="articleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.yuanwhy.fantasy.dao.ArticleDao" />
+	<bean id="filmDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.yuanwhy.fantasy.dao.FilmDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 

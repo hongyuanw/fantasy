@@ -1,8 +1,8 @@
 [#ftl ]
-[#list articles as article]
-    ${article.id},
-    ${article.title},
-    ${article.content}
+[#list films as film]
+    ${film.filmId},
+    ${film.title},
+    ${film.description}
     <br />
 [/#list]
 
