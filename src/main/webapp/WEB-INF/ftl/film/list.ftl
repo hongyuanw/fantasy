@@ -52,23 +52,9 @@
     </table>
     <nav>
         <ul class="pagination">
-            [#if filmDtos.pageNum==1]
-                <li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-            [#else ]
-                <li><a href="${urlWithoutPaging}/pagenum/${filmDtos.pageNum-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-            [/#if]
-            [#list 1..filmDtos.pageCount as num]
-                [#if num==filmDtos.pageNum]
-                    <li class="active"><a href="${urlWithoutPaging}/pagenum/${num}">${num} <span class="sr-only">(current)</span></a></li>
-                [#else]
-                    <li><a href="${urlWithoutPaging}/pagenum/${num}">${num} </a></li>
-                [/#if]
-            [/#list]
-            [#if filmDtos.pageNum==filmDtos.pageCount]
-                <li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-            [#else ]
-                <li><a href="${urlWithoutPaging}/pagenum/${filmDtos.pageNum+1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-            [/#if]
+            [#import "/lib/page.ftl" as p]
+            [@p.genPage  pageNum=filmDtos.pageNum pageCount=filmDtos.pageCount urlWithoutPaging=urlWithoutPaging]
+            [/@p.genPage]
         </ul>
     </nav>
     powered by ${domain}
