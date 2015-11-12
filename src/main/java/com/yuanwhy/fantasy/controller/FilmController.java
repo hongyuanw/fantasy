@@ -27,8 +27,7 @@ public class FilmController {
     @RequestMapping(value = "/list/pagesize/{pageSize}/pagenum/{pageNum}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable int pageSize, @PathVariable int pageNum, HttpServletRequest request) {
         PageDto<Film> filmDtos = filmService.getFilms(pageSize, pageNum);
-        String urlWithoutPaging = request.getRequestURI();
-        urlWithoutPaging = urlWithoutPaging.substring(0, urlWithoutPaging.indexOf("/pagenum"));
+        String urlWithoutPaging = "/film/list/pagesize/" + pageSize;
         ModelAndView modelAndView = new ModelAndView("/film/list");
         modelAndView.addObject("filmDtos", filmDtos);
         modelAndView.addObject("urlWithoutPaging", urlWithoutPaging);
