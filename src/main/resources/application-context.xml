@@ -17,7 +17,7 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="filters" value="config"/>
-		<property name="connectionProperties" value="config.file=file:///druid-pool.properties" />
+		<property name="connectionProperties" value="config.file=file:///db.properties" />
 
 
 		<property name="maxActive">
