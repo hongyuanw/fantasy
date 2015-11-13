@@ -16,13 +16,9 @@
 	</bean>
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
-		<property name="url" value="jdbc:mysql://123.57.26.247:3306/sakila" />
-		<property name="username" value="root" />
-		<property name="password" value="123456" />
+		<property name="filters" value="config"/>
+		<property name="connectionProperties" value="config.file=file:///druid-pool.properties" />
 
-		<property name="filters">
-			<value>stat</value>
-		</property>
 
 		<property name="maxActive">
 			<value>20</value>
