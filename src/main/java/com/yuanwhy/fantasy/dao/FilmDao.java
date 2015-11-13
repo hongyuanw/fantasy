@@ -5,11 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface FilmDao {
+public interface FilmDao extends BaseDao<Film>{
 
-	Film getFilm(int n);
-
-	List<Film> getFilms(@Param("start")int start, @Param("offset")int offset);
-
-	int count();
 }

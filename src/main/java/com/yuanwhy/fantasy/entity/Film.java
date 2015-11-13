@@ -1,16 +1,16 @@
 package com.yuanwhy.fantasy.entity;
 
 public class Film {
-    private int filmId;
+    private int id;
     private String title;
     private String description;
 
-    public int getFilmId() {
-        return filmId;
+    public int getId() {
+        return id;
     }
 
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

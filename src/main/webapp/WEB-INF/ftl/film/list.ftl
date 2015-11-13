@@ -43,7 +43,7 @@
         <tbody>
         [#list filmDtos.items as film]
         <tr>
-            <td>${film.filmId}</td>
+            <td>${film.id}</td>
             <td>${film.title}</td>
             <td>${film.description}</td>
         </tr>

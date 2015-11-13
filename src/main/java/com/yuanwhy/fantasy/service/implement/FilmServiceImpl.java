@@ -17,12 +17,12 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public Film getFilm(int n) {
-        return filmDao.getFilm(n);
+        return filmDao.findById(n);
     }
 
     @Override
     public PageDto<Film> getFilms(int pageSize, int pageNum) {
-        List<Film> films = filmDao.getFilms(pageSize * (pageNum - 1), pageSize);
+        List<Film> films = filmDao.findAll(pageSize * (pageNum - 1), pageSize);
         PageDto<Film> pageDto = new PageDto<Film>();
         pageDto.setItems(films);
         pageDto.setPageNum(pageNum);

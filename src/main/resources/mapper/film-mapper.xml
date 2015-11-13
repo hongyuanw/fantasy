@@ -4,20 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yuanwhy.fantasy.dao.FilmDao">
     <resultMap id="result" type="com.yuanwhy.fantasy.entity.Film">
-        <result property="filmId" javaType="int" column="film_id"/>
+        <result property="id" javaType="java.lang.Integer" column="film_id"/>
         <result property="title" javaType="java.lang.String" column="title"/>
         <result property="description" javaType="java.lang.String" column="description"/>
     </resultMap>
 
-    <select id="getFilm" parameterType="int" resultMap="result">
-      SELECT film_id, title, description FROM film WHERE film_id = #{n}
+    <sql id="select_columns">
+        SELECT film_id, title, description FROM film
+    </sql>
+
+    <update id="update" parameterType="com.yuanwhy.fantasy.entity.Film">
+        UPDATE film SET title=#{title}, description=#{description} WHERE film_id = #{id}
+    </update>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="result">
+        <include refid="select_columns"></include>
+        WHERE film_id = #{id}
     </select>
 
-    <select id="getFilms" resultMap="result">
-      SELECT film_id, title, description FROM film LIMIT #{start},#{offset}
+    <select id="findAll" resultMap="result">
+        <include refid="select_columns"></include>
+        LIMIT #{start},#{offset}
     </select>
 
-    <select id="count" resultType="int">
-        SELECT count(*) FROM film
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM film
     </select>
 </mapper>
