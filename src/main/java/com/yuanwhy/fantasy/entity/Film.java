@@ -4,6 +4,7 @@ public class Film {
     private int id;
     private String title;
     private String description;
+    private short languageId;
 
     public int getId() {
         return id;
@@ -27,5 +28,13 @@ public class Film {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public short getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(short languageId) {
+        this.languageId = languageId;
     }
 }

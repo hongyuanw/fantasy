@@ -26,4 +26,13 @@ public class FilmDaoTest extends AbstractTest{
         Assert.assertEquals(title + "Test", newfilm.getTitle());
     }
 
+    @Test
+    public void insertTest() {
+        Film film = new Film();
+        film.setTitle("test");
+        film.setDescription("this is a test");
+        film.setLanguageId((short)1);
+        filmDao.insert(film);
+        System.out.println(film.getId());
+    }
 }

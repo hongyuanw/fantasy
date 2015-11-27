@@ -30,4 +30,19 @@
     <select id="count" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM film
     </select>
+
+    <insert id="insert" parameterType="com.yuanwhy.fantasy.entity.Film" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `film`
+        (
+          `title`,
+          `description`,
+          `language_id`
+        )
+        VALUES
+        (
+          #{title},
+          #{description},
+          #{languageId}
+        )
+    </insert>
 </mapper>
