@@ -6,68 +6,29 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-	<context:component-scan base-package="com.yuanwhy.fantasy"></context:component-scan>
+	<context:component-scan base-package="com.yuanwhy.fantasy"/>
 
 	<!-- mybatis-spring -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
-	</bean>
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		init-method="init" destroy-method="close">
-		<property name="filters" value="config"/>
-		<property name="connectionProperties" value="config.file=file:///db.properties" />
-
-
-		<property name="maxActive">
-			<value>20</value>
-		</property>
-		<property name="initialSize">
-			<value>1</value>
-		</property>
-		<property name="maxWait">
-			<value>60000</value>
-		</property>
-		<property name="minIdle">
-			<value>1</value>
-		</property>
-
-		<property name="timeBetweenEvictionRunsMillis">
-			<value>60000</value>
-		</property>
-		<property name="minEvictableIdleTimeMillis">
-			<value>300000</value>
-		</property>
-
-		<property name="validationQuery">
-			<value>SELECT 'x'</value>
-		</property>
-		<property name="testWhileIdle">
-			<value>true</value>
-		</property>
-		<property name="testOnBorrow">
-			<value>false</value>
-		</property>
-		<property name="testOnReturn">
-			<value>false</value>
-		</property>
-
-		<property name="poolPreparedStatements">
-			<value>true</value>
-		</property>
-		<property name="maxOpenPreparedStatements">
-			<value>20</value>
-		</property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
 	</bean>
 
-	<bean id="filmDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.yuanwhy.fantasy.dao.FilmDao" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fantasy"/>
+		<property name="user" value="root"/>
+		<property name="password" value=""/>
+ 	</bean>
+
+	<bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.yuanwhy.fantasy.dao.UserDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSource"/>
 	</bean>
 </beans>

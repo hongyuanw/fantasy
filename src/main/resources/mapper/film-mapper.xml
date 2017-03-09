@@ -2,47 +2,42 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yuanwhy.fantasy.dao.FilmDao">
-    <resultMap id="result" type="com.yuanwhy.fantasy.entity.Film">
-        <result property="id" javaType="java.lang.Integer" column="film_id"/>
-        <result property="title" javaType="java.lang.String" column="title"/>
-        <result property="description" javaType="java.lang.String" column="description"/>
+<mapper namespace="com.yuanwhy.fantasy.dao.UserDao">
+    <resultMap id="result" type="com.yuanwhy.fantasy.entity.User">
+        <result property="id" javaType="java.lang.Integer" column="id"/>
+        <result property="name" javaType="java.lang.String" column="name"/>
+        <result property="age" javaType="java.lang.Integer" column="age"/>
     </resultMap>
 
     <sql id="select_columns">
-        SELECT film_id, title, description FROM film
+        SELECT id, name, age FROM user_0
     </sql>
 
-    <update id="update" parameterType="com.yuanwhy.fantasy.entity.Film">
-        UPDATE film SET title=#{title}, description=#{description} WHERE film_id = #{id}
+    <update id="update" parameterType="com.yuanwhy.fantasy.entity.User">
+        UPDATE user SET name=#{name}, age=#{age} WHERE id = #{id}
     </update>
 
     <select id="findById" parameterType="java.lang.Integer" resultMap="result">
-        <include refid="select_columns"></include>
-        WHERE film_id = #{id}
+        <include refid="select_columns"/>
+        WHERE id = #{id}
     </select>
 
-    <select id="findAll" resultMap="result">
-        <include refid="select_columns"></include>
-        LIMIT #{start},#{offset}
-    </select>
-
-    <select id="count" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM film
-    </select>
-
-    <insert id="insert" parameterType="com.yuanwhy.fantasy.entity.Film" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO `film`
+    <insert id="insert" parameterType="com.yuanwhy.fantasy.entity.User" keyProperty="id">
+        INSERT INTO `user_0`
         (
-          `title`,
-          `description`,
-          `language_id`
+          `id`,
+          `name`,
+          `age`
         )
         VALUES
         (
-          #{title},
-          #{description},
-          #{languageId}
+          #{id},
+          #{name},
+          #{age}
         )
     </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM user_0 WHERE id = #{id}
+    </delete>
 </mapper>

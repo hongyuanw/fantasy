@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fantasy</title>
     <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/navbar.css" rel="stylesheet">
 </head>
@@ -23,11 +22,6 @@
                 </button>
                 <a class="navbar-brand" href="/">Fantasy</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
-                </ul>
-            </div>
             <!--/.nav-collapse -->
         </div>
         <!--/.container-fluid -->
@@ -36,28 +30,20 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
+            <th>Name</th>
+            <th>Age</th>
         </tr>
         </thead>
         <tbody>
-        [#list filmDtos.items as film]
         <tr>
-            <td>${film.id}</td>
-            <td>${film.title}</td>
-            <td>${film.description}</td>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.age}</td>
         </tr>
-        [/#list]
         </tbody>
     </table>
-    <nav>
-        <ul class="pagination">
-            [#import "/lib/page.ftl" as p]
-            [@p.genPage  pageNum=filmDtos.pageNum pageCount=filmDtos.pageCount urlWithoutPaging=urlWithoutPaging]
-            [/@p.genPage]
-        </ul>
-    </nav>
-    powered by ${domain}
+
+    powered by yuanwhy.com
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
