@@ -15,12 +15,19 @@
 		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
 	</bean>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fantasy"/>
-		<property name="user" value="root"/>
-		<property name="password" value=""/>
- 	</bean>
+	<!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+		<!--<property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
+		<!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fantasy"/>-->
+		<!--<property name="user" value="root"/>-->
+		<!--<property name="password" value=""/>-->
+ 	<!--</bean>-->
+
+	<bean id="dataSource" class="com.alipay.zdal.client.jdbc.ZdalDataSource" init-method="init" destroy-method="close">
+		<property name="appName" value="fantasy"/>
+		<property name="appDsName" value="fantasyDs"/>
+		<property name="dbmode" value="dev" />
+		<property name="configPath" value="classpath:zdal" />
+	</bean>
 
 	<bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.yuanwhy.fantasy.dao.UserDao" />

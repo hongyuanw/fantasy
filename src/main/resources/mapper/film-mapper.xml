@@ -10,7 +10,7 @@
     </resultMap>
 
     <sql id="select_columns">
-        SELECT id, name, age FROM user_0
+        SELECT id, name, age FROM user
     </sql>
 
     <update id="update" parameterType="com.yuanwhy.fantasy.entity.User">
@@ -23,7 +23,7 @@
     </select>
 
     <insert id="insert" parameterType="com.yuanwhy.fantasy.entity.User" keyProperty="id">
-        INSERT INTO `user_0`
+        INSERT INTO `user`
         (
           `id`,
           `name`,
@@ -38,6 +38,6 @@
     </insert>
 
     <delete id="delete" parameterType="java.lang.Integer">
-        DELETE FROM user_0 WHERE id = #{id}
+        DELETE FROM user WHERE id = #{id}
     </delete>
 </mapper>

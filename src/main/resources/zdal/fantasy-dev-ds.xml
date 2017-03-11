@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="fantasy" class="com.alipay.zdal.client.config.bean.ZdalAppBean">
+		<property name="appName" value="fantasy" />
+		<property name="dbmode" value="dev" />
+		<property name="appDataSourceList">
+			<list>		
+				<ref bean="fantasyDs" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="fantasyDs" class="com.alipay.zdal.client.config.bean.AppDataSourceBean">
+		<property name="appDataSourceName" value="fantasyDs" />
+		<property name="dataBaseType" value="MYSQL" />
+		<property name="configType" value="SHARD" />
+		<property name="appRule" ref="fantasyRule"/>
+		<property name="physicalDataSourceSet">
+			<set>
+				<ref bean="physics0"/>
+			</set>
+		</property>
+	</bean>
+	
+
+	<bean id="physics0" class="com.alipay.zdal.client.config.bean.PhysicalDataSourceBean" >
+		<property name="name" value="master_0" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fantasy" />
+	    <property name="userName" value="root" />
+	    <property name="password" value="" />
+	    <property name="minConn" value="1" />
+	    <property name="maxConn" value="10" />
+	    <property name="blockingTimeoutMillis" value="180" />
+	    <property name="idleTimeoutMinutes" value="180" />
+	    <property name="preparedStatementCacheSize" value="100" />
+	    <property name="queryTimeout" value="180" />
+	    <property name="prefill" value="true"/>
+	    <property name="connectionProperties">
+			<map>
+				<entry key="connectTimeout" value="500" />
+				<entry key="autoReconnect" value="true" />
+				<entry key="initialTimeout" value="1" />
+				<entry key="maxReconnects" value="2" />
+				<entry key="socketTimeout" value="5000" />
+				<entry key="failOverReadOnly" value="false" />
+			</map>
+		 </property>
+	</bean>
+
+
+</beans>
